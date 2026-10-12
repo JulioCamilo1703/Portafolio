@@ -1,12 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Portafolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portafolio-v1</title>
-    <script type="module" crossorigin src="/Portafolio/assets/index-BK1KbLtv.js"></script>
-    <link rel="stylesheet" crossorigin href="/Portafolio/assets/index-C2M6FK8c.css">
+    <title>Portafolio</title>
+    <script>
+      // Recupera la ruta guardada por 404.html y la aplica con history.replaceState
+      // para que React Router la vea como si fuera una navegación normal.
+      (function () {
+        var redirect = sessionStorage.getItem('spa-redirect');
+        if (redirect) {
+          sessionStorage.removeItem('spa-redirect');
+          var base = '/Portafolio';
+          window.history.replaceState(null, '', base + redirect);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/Portafolio/assets/index-BXhOlRZd.js"></script>
+    <link rel="stylesheet" crossorigin href="/Portafolio/assets/index-n7kjITOF.css">
   </head>
   <body>
     <div id="root"></div>

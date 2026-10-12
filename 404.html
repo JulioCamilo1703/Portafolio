@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Truco para GitHub Pages + SPA:
+      // Guarda la ruta actual en sessionStorage y redirige al index.
+      // El index.html la recupera y React Router toma el control.
+      var path = window.location.pathname;
+      var base = '/Portafolio';
+      var route = path.replace(base, '') || '/';
+      sessionStorage.setItem('spa-redirect', route + window.location.search);
+      window.location.replace(base + '/');
+    </script>
+  </head>
+  <body></body>
+</html>
