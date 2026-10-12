@@ -1,0 +1,186 @@
+/* ── Página completa ─────────────────────────────────────── */
+.servicios-page {
+  min-height: 100vh;
+  padding: 5rem clamp(1.5rem, 8vw, 8rem) 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.servicios-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+
+.servicios-hero__tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acento);
+  font-weight: 600;
+}
+
+.servicios-hero__titulo {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--texto);
+}
+
+.servicios-hero__acento {
+  color: var(--acento);
+}
+
+.servicios-hero__subtitulo {
+  max-width: 52ch;
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ── Grid de cards ───────────────────────────────────────── */
+.servicios-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ── Card individual ─────────────────────────────────────── */
+.servicio-card {
+  position: relative;
+  background: var(--fondo-alt);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.servicio-card:hover {
+  border-color: var(--acento);
+  transform: translateY(-3px);
+}
+
+.servicio-card--destacado {
+  border-color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 6%, var(--fondo-alt));
+}
+
+.servicio-card__badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--acento);
+  color: var(--fondo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.9rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.servicio-card__emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.servicio-card__titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.servicio-card__descripcion {
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.servicio-card__precio {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--acento);
+}
+
+/* ── Lista de incluidos ──────────────────────────────────── */
+.servicio-card__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.servicio-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.servicio-card__check {
+  color: var(--acento);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── CTA fuera de las cards ──────────────────────────────── */
+.servicios-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+  border-top: 1px solid var(--borde);
+}
+
+.servicios-cta__texto {
+  max-width: 52ch;
+  color: var(--texto-suave);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.servicios-cta__btn {
+  display: inline-block;
+  padding: 0.85rem 2.25rem;
+  border-radius: 8px;
+  background: var(--acento);
+  color: var(--fondo);
+  font-family: var(--fuente);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.servicios-cta__btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.servicios-cta__nota {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.servicios-cta__link {
+  color: var(--acento);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

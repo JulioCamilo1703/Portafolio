@@ -1,3 +1,4 @@
+/* ── Navbar top (escritorio) ─────────────────────────────── */
 .nav {
   position: fixed;
   top: 0;
@@ -52,8 +53,70 @@
   outline-offset: 4px;
 }
 
-@media (max-width: 560px) {
-  .nav__logo { display: none; }
-  .nav__contenido { gap: 1rem; }
-  .nav__lista { margin-right: auto; }
+/* ── Barra inferior móvil ────────────────────────────────── */
+.nav-bottom {
+  display: none; /* oculta en escritorio */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 4rem;
+  background: var(--fondo);
+  border-top: 1px solid var(--borde);
+  transition: background-color 0.25s, border-color 0.25s;
+  /* distribuye los ítems uniformemente */
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.nav-bottom__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--texto-suave);
+  font-size: 0.68rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  flex: 1;
+}
+
+.nav-bottom__item:hover {
+  color: var(--texto);
+  background: var(--fondo-alt);
+}
+
+.nav-bottom__item--activo {
+  color: var(--acento);
+}
+
+.nav-bottom__icono {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.nav-bottom__texto {
+  line-height: 1;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Oculta navbar top en móvil */
+  .nav {
+    display: none;
+  }
+
+  /* Muestra barra inferior */
+  .nav-bottom {
+    display: flex;
+  }
+
+  /* Añade padding al contenido para que no quede bajo la barra */
+  main {
+    padding-bottom: 4rem;
+  }
 }

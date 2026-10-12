@@ -1,10 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Portafolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portafolio-v1</title>
+    <title>Portafolio</title>
+    <script>
+      // Recupera la ruta guardada por 404.html y la aplica con history.replaceState
+      // para que React Router la vea como si fuera una navegación normal.
+      (function () {
+        var redirect = sessionStorage.getItem('spa-redirect');
+        if (redirect) {
+          sessionStorage.removeItem('spa-redirect');
+          var base = '/Portafolio';
+          window.history.replaceState(null, '', base + redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
