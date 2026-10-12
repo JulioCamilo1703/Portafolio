@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Hero from "./secciones/Hero/Hero";
 import Proyectos from "./secciones/Proyectos/Proyectos";
 import Contacto from "./secciones/Contacto/Contacto";
@@ -6,6 +7,12 @@ import Navbar from "./secciones/Navbar/Navbar";
 import SobreMi from "./secciones/Sobremi/Sobremi";
 import Servicios from "./secciones/Servicios/Servicios";
 import "./App.css";
+
+function ScrollAlTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 function PaginaInicio() {
   return (
@@ -21,6 +28,7 @@ function PaginaInicio() {
 function App() {
   return (
     <BrowserRouter basename="/Portafolio">
+      <ScrollAlTop />
       <Navbar />
       <main>
         <Routes>

@@ -1,73 +1,48 @@
 .dino {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   z-index: 0;
-
   pointer-events: none;
-
   overflow: hidden;
 }
 
 .dino__lienzo {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   display: block;
-
   pointer-events: none;
-
   user-select: none;
 }
 
-/*
- * Botón JUGAR en el Hero
- */
-
+/* ── Botón JUGAR ─────────────────────────────────────────── */
 .dino__acciones {
   position: absolute;
-
   left: 50%;
   bottom: 32px;
-
   transform: translateX(-50%);
-
   z-index: 5;
-
   pointer-events: auto;
 }
 
 .dino__btn {
   padding: 0.65rem 1.25rem;
-
   font: inherit;
   font-size: 0.9rem;
-
   color: var(--acento);
-
   background: transparent;
-
   border: 1px solid var(--acento);
   border-radius: 7px;
-
   cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .dino__btn:hover {
   color: var(--fondo);
   background: var(--acento);
-
   transform: translateY(-2px);
 }
 
@@ -77,26 +52,14 @@
   outline-offset: 4px;
 }
 
-/*
- * =========================
- * MODO JUEGO
- * =========================
- */
-
+/* ── Modo juego (pantalla completa) ──────────────────────── */
 .dino--pantalla {
   position: fixed;
-
   inset: 0;
-
   z-index: 99999;
-
   width: 100vw;
   height: 100vh;
-
-  min-height: 100vh;
-
   background: var(--fondo);
-
   pointer-events: auto;
 }
 
@@ -104,77 +67,108 @@
   pointer-events: auto;
 }
 
-/*
- * Cerrar arriba a la izquierda
- */
-
-.dino__cerrar {
-  position: fixed;
-
-  top: 22px;
-  left: 22px;
-
-  z-index: 100000;
-
-  padding: 0.55rem 0.9rem;
-
-  font: inherit;
-  font-size: 0.9rem;
-
-  color: var(--texto);
-
-  background: var(--fondo);
-
-  border: 1px solid var(--borde);
-  border-radius: 7px;
-
-  cursor: pointer;
-
-  opacity: 0.9;
-
-  transition:
-    color 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.dino__cerrar:hover {
-  color: var(--acento);
-
-  opacity: 1;
-
-  transform: translateX(-2px);
-}
-
-/*
- * El botón de reintentar
- * permanece abajo
- */
-
 .dino--pantalla .dino__acciones {
   bottom: 30px;
 }
-
-/*
- * En modo juego el botón no aparece
- * mientras está corriendo.
- */
 
 .dino--pantalla .dino__btn {
   background: var(--fondo);
 }
 
-/*
- * Adaptación móvil
- */
+/* ── Cerrar ──────────────────────────────────────────────── */
+.dino__cerrar {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 100000;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--texto);
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
 
-@media (max-width: 700px) {
-  .dino__acciones {
-    bottom: 24px;
+.dino__cerrar:hover {
+  color: var(--acento);
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+/* ── Aviso de rotación ───────────────────────────────────── */
+.dino__rotar {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  background: var(--fondo);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: auto;
+}
+
+.dino__rotar__icono {
+  font-size: 3rem;
+  animation: girar 1.5s ease-in-out infinite alternate;
+}
+
+.dino__rotar__texto {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  max-width: 28ch;
+  line-height: 1.6;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(90deg); }
+}
+
+/* ── Móvil vertical ──────────────────────────────────────── */
+@media (max-width: 600px) and (orientation: portrait) {
+  /* En el hero el dino ocupa un bloque cuadrado */
+  .dino:not(.dino--pantalla) {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    /* cuadrado: mismo alto que el ancho disponible */
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 
-  .dino__cerrar {
-    top: 14px;
-    left: 14px;
+  .dino:not(.dino--pantalla) .dino__lienzo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* el canvas interno es 1200×700, lo recortamos centrado */
+    object-fit: cover;
+  }
+
+  /* Botón jugar un poco más arriba */
+  .dino:not(.dino--pantalla) .dino__acciones {
+    bottom: 42px;
+  }
+}
+
+/* ── Móvil horizontal durante el juego → aviso de rotar ─── */
+@media (max-width: 900px) and (orientation: landscape) {
+  /* Ocultar el juego y mostrar el aviso */
+  .dino--pantalla .dino__lienzo,
+  .dino--pantalla .dino__acciones,
+  .dino--pantalla .dino__cerrar {
+    display: none;
+  }
+
+  .dino--pantalla .dino__rotar {
+    display: flex;
   }
 }

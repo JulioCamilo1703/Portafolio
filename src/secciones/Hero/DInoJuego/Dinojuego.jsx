@@ -1354,18 +1354,15 @@ export default function DinoJuego() {
 
   return (
     <div
-      className={`dino ${
-        fase !== "idle"
-          ? "dino--pantalla"
-          : ""
-      }`}
-      aria-hidden="true"
+      className={`dino ${fase !== "idle" ? "dino--pantalla" : ""}`}
     >
+      {/* El canvas es puramente visual, sin información para lectores de pantalla */}
       <canvas
         ref={canvasRef}
         className="dino__lienzo"
         width={ANCHO}
         height={ALTO}
+        aria-hidden="true"
       />
 
       {fase !== "idle" && (
@@ -1398,6 +1395,19 @@ export default function DinoJuego() {
           </button>
         )}
       </div>
+
+      {/* Aviso al girar el celular mientras se juega */}
+      {fase !== "idle" && (
+        <div className="dino__rotar" aria-live="polite">
+          <span className="dino__rotar__icono" aria-hidden="true">📱</span>
+          <p className="dino__rotar__texto">
+            Gira el celular para jugar en vertical
+          </p>
+          <button className="dino__btn" onClick={cerrarJuego}>
+            volver
+          </button>
+        </div>
+      )}
     </div>
   );
 }
