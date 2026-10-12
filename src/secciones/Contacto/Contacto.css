@@ -1,0 +1,133 @@
+/* Prefijo .contacto en todo para que estilos globales no le ganen */
+
+.seccion.contacto {
+  background: var(--fondo-alt);
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  transition: background-color 0.25s;
+}
+
+.contacto .contacto__grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+/* ---- Texto ---- */
+.contacto .contacto__titulo {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.contacto .contacto__prompt { color: var(--acento); }
+
+.contacto .contacto__texto p {
+  max-width: 50ch;
+  color: var(--texto-suave);
+}
+
+/* ---- Filas de contacto ---- */
+.contacto .contacto__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contacto .contacto__fila {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  color: var(--acento);
+  text-decoration: none;
+  background: var(--fondo);
+  border: 1px solid var(--borde-alt);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, background-color 0.25s;
+}
+
+.contacto a.contacto__fila:hover { border-color: var(--acento); }
+
+.contacto a.contacto__fila:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+.contacto .contacto__fila svg { flex-shrink: 0; }
+
+.contacto .contacto__info { flex: 1; min-width: 0; }
+
+.contacto .contacto__nombre {
+  color: var(--texto);
+  font-weight: 700;
+}
+
+.contacto .contacto__detalle {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.contacto .contacto__valor {
+  color: var(--acento);
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+/* ---- Boton "mostrar" / "copiar" ---- */
+.contacto .contacto__accion {
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  color: var(--acento);
+  background: transparent;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.contacto .contacto__accion:hover {
+  background: var(--acento);
+  color: var(--fondo);
+}
+
+.contacto .contacto__accion:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+/* Texto solo para lectores de pantalla */
+.contacto .solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---- Pie ---- */
+.contacto .contacto__pie {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 899px) {
+  .seccion.contacto { padding-top: 4rem; }
+  .contacto .contacto__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .seccion.contacto { padding-top: 3rem; }
+}

@@ -1,0 +1,306 @@
+/* =========================================================
+   SOBRE MÍ
+   Todo va con el prefijo .sobre para que ningun estilo global
+   (por ejemplo los de la plantilla de Vite) le gane.
+   ========================================================= */
+
+.seccion.sobre {
+  background: var(--fondo-alt);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  transition: background-color 0.25s;
+}
+
+/* ---- Layout principal ---- */
+
+.sobre .sobre__grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+/* ---- Columna izquierda ---- */
+
+.sobre .sobre__texto { max-width: 600px; }
+
+.sobre .sobre__titulo {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.sobre .sobre__prompt { color: var(--acento); }
+
+.sobre .sobre__texto p {
+  max-width: 60ch;
+  color: var(--texto-suave);
+  margin-bottom: 1rem;
+}
+
+.sobre .sobre__texto a { color: var(--acento); }
+
+.sobre .sobre__texto a:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   PESTAÑAS (botones en forma de pastilla)
+   ========================================================= */
+
+.sobre .sobre__pestanas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.sobre .pestana {
+  appearance: none;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  color: var(--texto-suave);
+  background: transparent;
+  border: 1px solid var(--borde-alt);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sobre .pestana:hover {
+  color: var(--texto);
+  border-color: var(--acento);
+}
+
+.sobre .pestana--activa,
+.sobre .pestana--activa:hover {
+  color: var(--fondo);
+  background: var(--acento);
+  border-color: var(--acento);
+}
+
+.sobre .pestana:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+.sobre .sobre__paneles { width: 100%; }
+
+.sobre .panel {
+  width: 100%;
+  animation: panelEntrada 0.25s ease both;
+}
+
+@keyframes panelEntrada {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   HABILIDADES
+   frontend y backend lado a lado, herramientas debajo a lo ancho
+   ========================================================= */
+
+.sobre .panel--habilidades {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sobre .panel--habilidades .grupo:last-child { grid-column: 1 / -1; }
+
+.sobre .grupo {
+  padding: 1rem;
+  border: 1px solid var(--borde-alt);
+  border-radius: 10px;
+  background: var(--fondo);
+}
+
+.sobre .grupo__titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--acento);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sobre .grupo__titulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--borde-alt);
+}
+
+/* Tarjetas pequeñas en cuadricula horizontal */
+.sobre .grupo__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 0.6rem;
+}
+
+.sobre .tecnologia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 0;
+  min-height: 76px;
+  padding: 0.6rem 0.3rem;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  background: var(--fondo-alt);
+  border: 1px solid var(--borde-alt);
+  border-radius: 8px;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.sobre .tecnologia:hover {
+  color: var(--acento);
+  border-color: var(--acento);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   APRENDIENDO
+   ========================================================= */
+
+.sobre .aprendo { list-style: none; margin: 0; padding: 0; }
+
+.sobre .aprendo__fila {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  color: var(--acento);
+  border-bottom: 1px solid var(--borde-alt);
+}
+
+.sobre .aprendo__fila:first-child { padding-top: 0; }
+.sobre .aprendo__fila:last-child { border-bottom: 0; }
+.sobre .aprendo__fila svg { flex-shrink: 0; margin-top: 0.15rem; }
+
+.sobre .aprendo__nombre { color: var(--texto); font-weight: 700; }
+
+.sobre .aprendo__detalle {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  max-width: 48ch;
+}
+
+/* =========================================================
+   TRAYECTORIA
+   ========================================================= */
+
+.sobre .camino {
+  list-style: none;
+  padding: 0;
+  border-left: 1px solid var(--borde-alt);
+  margin-left: 0.4rem;
+}
+
+.sobre .paso {
+  position: relative;
+  padding: 0 0 1.5rem 1.75rem;
+}
+
+.sobre .paso:last-child { padding-bottom: 0; }
+
+.sobre .paso::before {
+  content: "";
+  position: absolute;
+  left: -0.42rem;
+  top: 0.35rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--fondo-alt);
+  border: 2px solid var(--acento);
+}
+
+.sobre .paso--actual::before { background: var(--acento); }
+
+.sobre .paso__etiqueta {
+  font-size: 0.8rem;
+  color: var(--acento);
+  margin-bottom: 0.1rem;
+}
+
+.sobre .paso__titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.sobre .paso__texto {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-top: 0.25rem;
+}
+
+.sobre .paso__items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.sobre .paso__items li {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  background: var(--fondo);
+  border: 1px solid var(--borde-alt);
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+}
+
+/* =========================================================
+   ESCRITORIO: altura minima para que el panel no "salte" al cambiar de pestaña
+   ========================================================= */
+
+@media (min-width: 900px) {
+  .sobre .sobre__paneles { min-height: 28rem; }
+}
+
+/* =========================================================
+   TABLET / CELULAR
+   ========================================================= */
+
+@media (max-width: 899px) {
+  .seccion.sobre { padding-top: 4rem; padding-bottom: 4rem; }
+  .sobre .sobre__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .sobre .sobre__texto { max-width: 65ch; }
+}
+
+@media (max-width: 600px) {
+  .seccion.sobre { padding-top: 3rem; padding-bottom: 3rem; }
+  .sobre .sobre__grid { gap: 2.5rem; }
+  .sobre .pestana { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+  .sobre .panel--habilidades { grid-template-columns: 1fr; }
+  .sobre .grupo__lista { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre .panel { animation: none; }
+  .sobre .tecnologia:hover { transform: none; }
+}

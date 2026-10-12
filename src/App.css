@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tema oscuro (por defecto) */
+:root {
+  --fondo: #12141a;
+  --texto: #d7dae0;
+  --texto-suave: #8b92a1;
+  --acento: #7fd1b9;
+  --borde: #2a2f3a;
+  --fondo-alt: #1b202b; /* franja que contrasta con el fondo */
+  --borde-alt: #333a4a;
+  --fuente: "JetBrains Mono", "Fira Code", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+
+/* Tema claro: solo se redefinen las variables */
+:root[data-theme="light"] {
+  --fondo: #f5f6f8;
+  --texto: #1d2129;
+  --texto-suave: #5b6373;
+  --acento: #0f7a5f;
+  --borde: #cfd4dc;
+  --fondo-alt: #e7eaf0;
+  --borde-alt: #c4cad6;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem; /* alto del navbar */
+  scroll-snap-type: y proximity; /* cada seccion "se pega" a la pantalla */
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  line-height: 1.6;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+/* Clase comun para TODAS las secciones: una pantalla completa */
+.seccion {
+  min-height: 100vh;
+  min-height: 100svh; /* en celular respeta la barra del navegador */
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 8vw, 8rem);
+  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

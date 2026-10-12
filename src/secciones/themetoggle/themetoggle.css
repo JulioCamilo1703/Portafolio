@@ -1,0 +1,24 @@
+.tema {
+  /* OJO: sin position fixed/absolute, vive dentro del flex del navbar */
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  color: var(--texto-suave);
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tema:hover {
+  color: var(--acento);
+  border-color: var(--acento);
+}
+
+.tema:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+}

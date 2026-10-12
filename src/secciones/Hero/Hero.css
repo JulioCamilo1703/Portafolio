@@ -1,0 +1,112 @@
+.hero__titulo {
+  font-size: clamp(2.8rem, 11vw, 8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.hero__prompt {
+  color: var(--acento);
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 2.4vw, 1.5rem);
+  color: var(--texto-suave);
+}
+
+.hero__rol {
+  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+  color: var(--acento);
+  margin-top: 1.5rem;
+}
+
+.hero__desc {
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+.hero__oculto {
+  visibility: hidden;
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--acento);
+  animation: parpadeo 1s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cursor { animation: none; }
+}
+
+/* Texto a la izquierda, dinosaurio en un cuadrado a la derecha */
+.seccion.hero {
+  padding-top: 5rem; /* deja libre el navbar fijo */
+  padding-bottom: 2rem;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 4rem;
+  }
+}
+
+/* ---- Boton "conoceme" (copia solo este bloque a tu Hero.css) ---- */
+.hero .hero__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--acento);
+  text-decoration: none;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  padding: 0.6rem 1.25rem;
+  /* oculto mientras se escribe el texto, pero ocupando su lugar */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease, background-color 0.2s, color 0.2s;
+}
+
+.hero .hero__boton--listo {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hero .hero__boton:hover {
+  background: var(--acento);
+  color: var(--fondo);
+}
+
+.hero .hero__boton:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+.hero .hero__boton svg { transition: transform 0.2s ease; }
+.hero .hero__boton:hover svg { transform: translateY(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero__boton,
+  .hero .hero__boton svg { transition: none; }
+  .hero .hero__boton:hover svg { transform: none; }
+}
